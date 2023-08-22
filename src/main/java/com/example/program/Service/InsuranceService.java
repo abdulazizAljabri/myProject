@@ -55,14 +55,14 @@ public class InsuranceService {
             throw new ApiException("Insurance not found");
         }
         else if (insurance1.getName().equals("tawuniya")) {
-            insurance1.setDescription("hi i am tawuniya");
+            insurance1.setDescription(" Tawuniya Insurance Company provides two types of vehicle insurance : third party insurance, comprehensive insurance.We have Good Price .");
             insuranceRepository.save(insurance1);
         } else if (insurance1.getName().equals("salama")) {
-            insurance1.setDescription("hi i am salama");
+            insurance1.setDescription(" Salama Insurance Company provides two types of vehicle insurance : third party insurance, comprehensive insurance.We have Good Price .");
             insuranceRepository.save(insurance1);
         }
         else {
-            insurance1.setDescription("Walaa Insurance Company provides two types of vehicle insurance, third party insurance, comprehensive insurance. You can get the quote online and insure your car in minutes.");
+            insurance1.setDescription(" Walaa Insurance Company provides two types of vehicle insurance : third party insurance, comprehensive insurance.We have Good Price .");
             insuranceRepository.save(insurance1);
         }
     }
