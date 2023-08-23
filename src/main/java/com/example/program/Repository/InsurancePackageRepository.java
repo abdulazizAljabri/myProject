@@ -9,9 +9,10 @@ import java.util.List;
 @Repository
 public interface InsurancePackageRepository extends JpaRepository<InsurancePackage,Integer> {
     InsurancePackage findInsurancePackageById(Integer id);
-    List<InsurancePackage> findInsurancePackageByInsurancePriceIsLessThan(Integer insurancePrice);
+    List<InsurancePackage> findInsurancePackageByInsurancePriceIsLessThan(Double insurancePrice);
 
     List<InsurancePackage>findInsurancePackageByInsuranceType(String insuranceType);
+
 
 
 }

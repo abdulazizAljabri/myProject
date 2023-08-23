@@ -59,11 +59,33 @@ public class InsurancePackageService {
         return insurancePackage;
     }
 
-    public List<InsurancePackage>searchByInsurancePrice(Integer insurancePrice){
+    public List<InsurancePackage>searchByInsurancePrice(Double insurancePrice){
         List<InsurancePackage> insurancePackage = insurancePackageRepository.findInsurancePackageByInsurancePriceIsLessThan(insurancePrice);
         if(insurancePackage == null){
             throw new ApiException("Insurance package not found");
         }
         return insurancePackage;
+    }
+
+    public void discountForInsurance(Integer insuranceId){
+        InsurancePackage insuranceType = insurancePackageRepository.findInsurancePackageById(insuranceId);
+        if(insuranceType == null){
+            throw new ApiException("Service not found");
+        }
+        insuranceType.getInsuranceType();
+        if(insuranceType.equals("walaa")){
+            Double newPrice = insuranceType.getInsurancePrice() * 0.1;
+            insuranceType.setInsurancePrice(newPrice);
+            insurancePackageRepository.save(insuranceType);
+        } else if (insuranceType.equals("salama")) {
+            Double newPrice = insuranceType.getInsurancePrice() * 0.15;
+            insuranceType.setInsurancePrice(newPrice);
+            insurancePackageRepository.save(insuranceType);
+        }
+        else {
+            Double newPrice = insuranceType.getInsurancePrice() * 0.20;
+            insuranceType.setInsurancePrice(newPrice);
+            insurancePackageRepository.save(insuranceType);
+        }
     }
 }

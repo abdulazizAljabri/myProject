@@ -53,8 +53,14 @@ public class InsurancePackageController {
     }
 
     @GetMapping("/price/{insurancePrice}")
-    public ResponseEntity searchInsuranceByPrice(@PathVariable Integer insurancePrice) {
+    public ResponseEntity searchInsuranceByPrice(@PathVariable Double insurancePrice) {
         return ResponseEntity.status(HttpStatus.OK).body(insurancePackageService.searchByInsurancePrice(insurancePrice));
+    }
+
+    @GetMapping("/discount/{insuranceId}")
+    public ResponseEntity searchDiscount(@PathVariable Integer insuranceId){
+        insurancePackageService.discountForInsurance(insuranceId);
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Service discount."));
     }
 
 
